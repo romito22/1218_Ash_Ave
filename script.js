@@ -89,6 +89,19 @@ document.querySelectorAll('[contenteditable][data-key]').forEach(el => {
   el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
 });
 
+/* ── CONTACT OBFUSCATION (anti-bot) ── */
+(function () {
+  const p = ['77', '0', '33', '1', '14', '58'];
+  const phone = p.join('');
+  const e = ['alex', 'p', 'dunlap', '@', 'gmail', '.', 'com'];
+  const email = e.join('');
+
+  const elP = document.getElementById('contact-phone');
+  const elE = document.getElementById('contact-email');
+  if (elP) { elP.textContent = '(' + phone.slice(0,3) + ') ' + phone.slice(3,6) + '-' + phone.slice(6); elP.href = 'tel:+1' + phone; }
+  if (elE) { elE.textContent = email; elE.href = 'mailto:' + email; }
+})();
+
 /* ── NAVBAR SCROLL SHADOW ── */
 const navbar = document.querySelector('.navbar');
 window.addEventListener('scroll', () => {
