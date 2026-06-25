@@ -16,7 +16,7 @@ try { lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop
 const rooms = [
   { id: 'room-1', label: 'Living Room (View 1)', src: 'images/360/room-1.jpg' },
   { id: 'room-2', label: 'Living Room (View 2)', src: 'images/360/room-2.jpg' },
-  { id: 'room-3', label: 'Room 3',               src: 'images/360/room-3.jpg' },
+  { id: 'room-3', label: 'Bathroom',             src: 'images/360/room-3.jpg' },
 ];
 
 let currentViewer = null;
