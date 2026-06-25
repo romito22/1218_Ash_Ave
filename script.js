@@ -50,6 +50,8 @@ function loadPanorama(room) {
     compass: false,
     showControls: true,
     hfov: 100,
+    yaw: 180,
+    pitch: 0,
   });
 }
 
