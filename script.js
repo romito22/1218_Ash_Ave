@@ -77,57 +77,6 @@ function buildTabs() {
 
 buildTabs();
 
-/* ── CONTACT FORM ── */
-/*
-  The form uses Formspree by default (free, no backend needed).
-  Replace YOUR_FORM_ID below with your actual Formspree form ID,
-  OR swap the fetch URL for any other form service.
-
-  To get a Formspree ID:
-  1. Go to https://formspree.io
-  2. Create a new form pointing to your email
-  3. Copy the form ID (e.g. "xpwzabcd")
-*/
-const FORMSPREE_ID = 'YOUR_FORM_ID'; // ← replace this
-
-const form = document.getElementById('contactForm');
-const note = document.getElementById('formNote');
-
-form.addEventListener('submit', async (e) => {
-  e.preventDefault();
-
-  if (FORMSPREE_ID === 'YOUR_FORM_ID') {
-    note.textContent = '✓ (Demo mode) Form ready — add your Formspree ID in script.js to receive emails.';
-    note.style.color = 'var(--accent)';
-    return;
-  }
-
-  const btn = form.querySelector('button[type="submit"]');
-  btn.textContent = 'Sending…';
-  btn.disabled = true;
-
-  try {
-    const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-      method: 'POST',
-      headers: { 'Accept': 'application/json' },
-      body: new FormData(form),
-    });
-
-    if (res.ok) {
-      note.textContent = "✓ Message sent! We'll be in touch soon.";
-      note.style.color = 'var(--accent)';
-      form.reset();
-    } else {
-      throw new Error();
-    }
-  } catch {
-    note.textContent = '✗ Something went wrong. Please email us directly.';
-    note.style.color = '#dc2626';
-  } finally {
-    btn.textContent = 'Send Message';
-    btn.disabled = false;
-  }
-});
 
 /* ── EDITABLE CAPTIONS (localStorage) ── */
 document.querySelectorAll('[contenteditable][data-key]').forEach(el => {
