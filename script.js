@@ -14,9 +14,9 @@ try { lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop
 */
 
 const rooms = [
-  { id: 'room-1', label: 'Room 1', src: 'images/360/room-1.jpg' },
-  { id: 'room-2', label: 'Room 2', src: 'images/360/room-2.jpg' },
-  { id: 'room-3', label: 'Room 3', src: 'images/360/room-3.jpg' },
+  { id: 'room-1', label: 'Living Room (View 1)', src: 'images/360/room-1.jpg' },
+  { id: 'room-2', label: 'Living Room (View 2)', src: 'images/360/room-2.jpg' },
+  { id: 'room-3', label: 'Room 3',               src: 'images/360/room-3.jpg' },
 ];
 
 let currentViewer = null;
@@ -127,6 +127,15 @@ form.addEventListener('submit', async (e) => {
     btn.textContent = 'Send Message';
     btn.disabled = false;
   }
+});
+
+/* ── EDITABLE CAPTIONS (localStorage) ── */
+document.querySelectorAll('[contenteditable][data-key]').forEach(el => {
+  const key = 'ash-' + el.dataset.key;
+  const saved = localStorage.getItem(key);
+  if (saved) el.textContent = saved;
+  el.addEventListener('blur', () => localStorage.setItem(key, el.textContent.trim()));
+  el.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); el.blur(); } });
 });
 
 /* ── NAVBAR SCROLL SHADOW ── */
