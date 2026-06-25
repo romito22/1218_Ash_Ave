@@ -1,5 +1,6 @@
 /* ── GALLERY (GLightbox) ── */
-const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true });
+let lightbox;
+try { lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop: true }); } catch(e) {}
 
 /* ── 360° TOUR (Pannellum) ── */
 /*
@@ -13,9 +14,9 @@ const lightbox = GLightbox({ selector: '.glightbox', touchNavigation: true, loop
 */
 
 const rooms = [
-  // { id: 'living-room', label: 'Living Room', src: 'images/360/living-room.jpg' },
-  // { id: 'kitchen',     label: 'Kitchen',     src: 'images/360/kitchen.jpg'     },
-  // { id: 'bedroom',     label: 'Bedroom',     src: 'images/360/bedroom.jpg'     },
+  { id: 'room-1', label: 'Room 1', src: 'images/360/room-1.jpg' },
+  { id: 'room-2', label: 'Room 2', src: 'images/360/room-2.jpg' },
+  { id: 'room-3', label: 'Room 3', src: 'images/360/room-3.jpg' },
 ];
 
 let currentViewer = null;
@@ -113,7 +114,7 @@ form.addEventListener('submit', async (e) => {
     });
 
     if (res.ok) {
-      note.textContent = '✓ Message sent! We'll be in touch soon.';
+      note.textContent = "✓ Message sent! We'll be in touch soon.";
       note.style.color = 'var(--accent)';
       form.reset();
     } else {
